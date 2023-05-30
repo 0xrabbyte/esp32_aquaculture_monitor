@@ -1,0 +1,80 @@
+menu "Aquaculture monitor panel project config"
+
+    menu "SEU-WLAN Connection Configuration"
+        config ENABLE_SEU_WLAN
+            bool "Enable SEU-WLAN auto login"
+            default n
+            help
+                This option enables the SEU-WLAN auto login feature. If you enable this option, you should also set the SEU Login Username and SEU Login Password.
+        
+        if ENABLE_SEU_WLAN
+            config SEU_LOGIN_USERNAME
+                string "SEU login username"
+                default "username"
+                help
+                    This is the username you use to login to the SEU-WLAN network.
+    
+            config SEU_LOGIN_PASSWORD
+                string "SEU login password"
+                default "password"
+                help
+                    This is the password you use to login to the SEU-WLAN network.
+        endif
+    endmenu
+
+    menu "Upload Server Configuration"
+        config SERVER_NAME
+            string "Upload server name"
+            default "rabbyte.xyz"
+            help
+                This is the upload server you send data to.
+        
+        config SERVER_PORT
+            string "Upload server port"
+            default "443"
+            help
+                This is the upload server port you send data to.
+        
+        config SERVER_URL
+            string "Upload url"
+            default "https://rabbyte.xyz/aquaculture_logger.php?time=%s&ind=%d&tds=%f&ph=%f&nth=%f&water_depth=%f&water_temperature=%f"
+            help
+                This is the url you send data to.
+        
+        config DATA_URL
+            string "Download data url"
+            default "https://rabbyte.xyz/aquaculture_data.csv"
+            help
+                This is where you get data from.
+    endmenu
+
+    menu "Camera Image Transfer Configuration"
+        config ONE_SINGLE_PACKAGE_SIZE
+            int "Single package size"
+            default 240
+            range 16 249
+            help
+                This is how large a single image package is.
+        
+        config CAMERA_IMAGE_WIDTH
+            int "Photo width"
+            default 352
+            range 150 480
+            help
+                This is the width of the photo.
+
+        config CAMERA_IMAGE_HEIGHT
+            int "Photo height"
+            default 288
+            range 150 480
+            help
+                This is the height of the photo.
+    endmenu
+    
+    config MAX_DEVICE
+        int "Max device numbers can be connected"
+        default 10
+        range 0 20
+        help
+            This is how many device you can connect to.
+endmenu

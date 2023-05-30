@@ -1,0 +1,66 @@
+menu "Slave hub project config"
+    config USE_FLASHLIGHT
+        bool "Use flashlight"
+        default n
+        help
+            This is to enable the flashlight feature.
+
+    config ONE_SINGLE_PACKAGE_SIZE
+        int "Single package size"
+        default 240
+        range 16 249
+        help
+            This is how large a single image package is.
+    
+    config ARDUINO_SLAVE_ADDR
+        int "Arduino slave address"
+        default 8
+        range 0 127
+        help
+            This is the address of the slave Arduino.
+
+    config DATA_UPDATE_PERIOD_MS
+        int "Data update period"
+        default 5000
+        range 500 100000
+        help
+            This is the period of updating data in ms.
+    
+    config IMAGE_DELAY_PERIOD_MS
+        int "Image delay period"
+        default 50
+        range 10 1000
+        help
+            This is the period of displaying an image in ms.
+
+    config USE_MASTER_MAC
+        bool "Use master MAC"
+        default n
+        help
+            This is to enable the master MAC feature, else will broadcast the data.
+    
+    if USE_MASTER_MAC
+        config MASTER_MAC_ADDR 
+            string "Master MAC address"
+            default "3f:3f:3f:3f:3f:3f"
+            help
+                This is the MAC address of the master.
+    endif
+    
+    menu "IIC IO config"
+        config I2C_MASTER_SCL_IO
+            int "I2C master SCL IO"
+            default 12
+            range 0 39
+            help
+                This is the SCL IO of the master.
+        
+        config I2C_MASTER_SDA_IO
+            int "I2C master SDA IO"
+            default 13
+            range 0 39
+            help
+                This is the SDA IO of the master.
+
+    endmenu
+endmenu

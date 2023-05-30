@@ -1,0 +1,19 @@
+SET(SOURCES screens/ui_QR_Code.c
+    screens/ui_Main_Screen.c
+    screens/ui_Camera.c
+    ui.c
+    ui_helpers.c
+    images/ui_img_906722072.c
+    images/ui_img_tds_png.c
+    images/ui_img_ph_png.c
+    images/ui_img_nth_png.c
+    images/ui_img_water_level_png.c
+    images/ui_img_water_temperature_png.c
+    images/ui_img_pump_png.c
+    images/ui_img_camera_png.c
+    images/ui_img_feeding_png.c
+    images/ui_img_wifi_png.c
+    images/ui_img_1608143951.c
+    images/ui_img_refresh_png.c)
+
+add_library(ui ${SOURCES})
